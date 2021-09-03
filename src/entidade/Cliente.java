@@ -48,9 +48,11 @@ public class Cliente {
 		this.nascimento = nascimento;
 	}
 	
-	// metodos
+	// metodos da classe
 	
+	@Override
 	public String toString() {
 		return nome + " (" + sdf.format(nascimento) + ") - " + email;
 	}	
 }
+	
