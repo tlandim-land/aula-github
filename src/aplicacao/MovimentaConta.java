@@ -1,5 +1,8 @@
 package aplicacao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import entidade.ContaEmpresa;
 import entidade.ContaNova;
 import entidade.Poupança;
@@ -55,8 +58,10 @@ public class MovimentaConta {
 		System.out.println("saldo conta empresa: " + empresa.getSaldo());
 		*/
 		
+		/*
+		// polimorfismo e classe abstrata
 		
-		// polimorfismo
+		// classe abstrata não deixa instanciar a classe abstrata
 		ContaNova corrente = new ContaNova(1000, "thiago conta", 1000.0);
 		ContaNova poupança = new Poupança(1001, "thiago poupança", 1000.0, 0.1);
 		ContaNova empresa = new ContaEmpresa(1002, "thiago empresa", 1000.0, 500.0);
@@ -68,5 +73,31 @@ public class MovimentaConta {
 		System.out.println("corrente " + corrente.getSaldo());
 		System.out.println("poupança " + poupança.getSaldo());
 		System.out.println("empresa " + empresa.getSaldo());
+		*/
+		
+		List<ContaNova> list = new ArrayList<>();
+		
+		//upcasting
+		
+		list.add(new Poupança(1001, "Alex", 500.00, 0.01));
+		list.add(new ContaEmpresa(1002, "Alex Empresa", 1000.00, 400.00));
+		list.add(new Poupança(1003, "Bob", 300.00, 0.01));
+		list.add(new Poupança(1004, "Bob Empresa", 500.00, 500.00));
+		
+		double soma = 0.00;
+		
+		for(ContaNova conta:list) {
+			soma += conta.getSaldo();
+		}
+		
+		System.out.println("saldo total todas as contas: " + soma);
+		
+		for(ContaNova conta:list) {
+			conta.deposito(10.00);
+		}
+		
+		for(ContaNova conta:list) {
+			System.out.println("saldo total todas contas pós deposito: " + conta.getNumero() + " " + conta.getSaldo());
+		}
 	}	
 }

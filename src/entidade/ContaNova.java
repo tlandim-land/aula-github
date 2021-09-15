@@ -1,6 +1,6 @@
 package entidade;
 
-public class ContaNova {
+public abstract class ContaNova {
 
 	private Integer numero;
 	private String titular;
